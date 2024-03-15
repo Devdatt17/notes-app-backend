@@ -16,7 +16,7 @@ mongoose.connect(mongoDBConnection)
 const database  = mongoose.connection
 
 database.on('error',(error)=>{
-    console.log(error)
+    console.error("Error on Database side!!!")
 })
 
 database.once('connected',()=>{
