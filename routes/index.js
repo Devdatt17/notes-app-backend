@@ -1,22 +1,16 @@
-const mongoose = require('mongoose')
-const dataSchema = mongoose.Schema({
-    _id: {
-        required: true,
-        type: String
-    },
-    title: {
-        required: true,
-        type: String
-    },
-    message: {
-        required: true,
-        type: String
-    },
-    lastModified: {
-        required: true,
-        type: Date
-    }
+const express = require('express')
+const controllers = require('../controllers/index')
 
-})
+const router = express.Router()
 
-module.exports = mongoose.model('Data',dataSchema)
+router.get('/',controllers.displayAllNotes)
+
+router.post('/',controllers.addNewNotes)
+
+router.delete('/:id',controllers.deleteSingleNote)
+
+router.get('/:id',controllers.displaySingleNote)
+
+router.patch('/:id',controllers.updateSingleNote)
+
+module.exports = router
