@@ -5,9 +5,11 @@ const router = express.Router()
 
 router.get('/',controllers.displayAllNotes)
 
-router.post('/',controllers.addNewNotes)
+router.post('/:id',controllers.addNewNotes)
 
 router.delete('/:id',controllers.deleteSingleNote)
+
+router.delete('/',controllers.deleteAllNotes)
 
 router.get('/:id',controllers.displaySingleNote)
 

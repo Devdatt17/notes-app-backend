@@ -1,4 +1,3 @@
-const { v4: uuidv4 } = require('uuid')
 const Models =  require('../models/models')
 
 //Display all notes
@@ -9,10 +8,11 @@ const displayAllNotes = async (req,res)=>{
 
 //Added new note
 const addNewNotes = async(req,res)=>{
+    const { id } = req.params
     const data = new Models({
         ...req.body,
         lastModified : Date.now(),
-        _id: uuidv4()
+        _id: id
     })
     
     await data.save()
@@ -42,10 +42,17 @@ const deleteSingleNote = async (req,res)=>{
     await Models.findByIdAndDelete(id)
     res.send(`Note with id ${req.params.id} is deleted`)
 }
+
+const deleteAllNotes = async (req,res)=>{
+    await Models.deleteMany()
+    res.send(`All Notes deleted`)
+}
+
 module.exports = {
     displayAllNotes,
     addNewNotes,
     displaySingleNote,
     updateSingleNote,
-    deleteSingleNote
+    deleteSingleNote,
+    deleteAllNotes
 }
