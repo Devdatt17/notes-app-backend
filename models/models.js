@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 const dataSchema = mongoose.Schema({
     _id: {
-        required: true,
+        required: false,
         type: String
     },
     title: {
-        required: true,
+        required: false,
         type: String
     },
     message: {
@@ -13,7 +13,7 @@ const dataSchema = mongoose.Schema({
         type: String
     },
     lastModified: {
-        required: true,
+        required: false,
         type: Date
     }
 
