@@ -9,7 +9,7 @@ const dataSchema = mongoose.Schema({
         type: String
     },
     message: {
-        required: true,
+        required: false,
         type: String
     },
     lastModified: {
