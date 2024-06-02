@@ -8,13 +8,9 @@ const displayAllNotes = async (req,res)=>{
 
 //Added new note
 const addNewNotes = async(req,res)=>{
-    const { id } = req.params
     const data = new Models({
-        ...req.body,
-        lastModified : Date.now(),
-        _id: id
+        ...req.body.data
     })
-    
     await data.save()
     res.send(`New note added to the database`)
 }
