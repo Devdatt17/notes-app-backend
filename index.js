@@ -5,6 +5,7 @@ const routers = require('./routes/index')
 const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
+const middleware = require('./middlewares/validation/validation')
 
 const PORT = process.env.PORT || 5050;
 
@@ -27,6 +28,7 @@ database.once('connected',()=>{
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(middleware)
 app.use('/', routers)
 
 app.listen(PORT, () => {
