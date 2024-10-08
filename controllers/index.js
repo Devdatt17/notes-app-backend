@@ -9,7 +9,7 @@ const displayAllNotes = async (req,res)=>{
 //Added new note
 const addNewNotes = async(req,res)=>{
     const data = new Models({
-        ...req.body.data
+        ...req.body
     })
     await data.save()
     res.send(`New note added to the database`)
